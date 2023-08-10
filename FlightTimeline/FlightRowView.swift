@@ -26,7 +26,7 @@ struct FlightRowView: View {
                     .foregroundColor(Color(uiColor: flight.timelineColor))
             }
             .sheet(isPresented: $detailsPresenting) {
-                FlightDetailsView(flight: flight)
+                FlightDetailsView(isPresented: $detailsPresenting, flight: flight)
             }
         }
         

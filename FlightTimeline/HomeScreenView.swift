@@ -36,6 +36,7 @@ struct HomeScreenView: View {
                     }
                     NavigationLink("Flight Timeline") {
                         TimelineView(flights: flightInfo)
+//                            .navigationTitle("Flight TimeLine")
                     }
                     Spacer()
                 }

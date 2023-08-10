@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct FlightDetailsView: View {
+    
+    @Binding var isPresented: Bool
+    
     let flight: FlightInformation
     
-    var destinationPrefix: String {
+    var toFromPrefix: String {
         flight.direction == .departure ? "To:" : "From"
     }
     
@@ -21,23 +24,24 @@ struct FlightDetailsView: View {
                     .font(.largeTitle)
                 Spacer()
                 Button("Done") {
-                    
+                    isPresented.toggle()
                 }
             }
-            Text("\(destinationPrefix): \(flight.otherAirport)")
+            Text("\(toFromPrefix): \(flight.otherAirport)")
             Text(flight.flightStatus)
                 .foregroundColor(Color(uiColor: flight.timelineColor))
             Spacer()
         }
         .font(.headline)
         .padding()
-        .navigationTitle("Flight Information")
-        
     }
 }
 
 struct FlightDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        FlightDetailsView(flight: FlightInformation.generateFlight())
+        FlightDetailsView(
+            isPresented: .constant(false),
+            flight: FlightInformation.generateFlight()
+        )
     }
 }
