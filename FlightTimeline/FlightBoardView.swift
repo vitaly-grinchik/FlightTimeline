@@ -32,7 +32,9 @@ struct FlightBoardView: View {
 //                Spacer()
 //                Text(flight.status.rawValue)
 //            }
-            FlightRowView(flight: flight)
+            NavigationLink(destination: FlightDetailsView(flight: flight)) {
+                FlightRowView(flight: flight)
+            }
         }
         .scrollIndicators(.hidden)
         .navigationTitle(boardName)
